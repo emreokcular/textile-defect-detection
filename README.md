@@ -3,10 +3,27 @@ In the context of textile fabric, rare anomaly can occurs, hence compromizing th
 
 ## Overview and Goal
 
+Fabric defect detection is a significant phase of quality control in textile industry. Manual defect inspection lacks the accuracy and the labor cost is high. So the goal of this project is to develop a system to detect defects in fabrics with Image Processing techniques and Neural Networks.
+
+## Dataset Desciption 
+
+The dataset is 4 GB and has 48000 distinct records. The size of the images in the dataset is either 32x32 or 64x64. The data includes records that belong 6 different classes of defects - 
+good - If the fabric is good and has no defect
+color - There is a defect in the color of the fabric 
+cut - There is a cut in the fabric
+hole - There is a hole in the fabric
+thread - There is some thread coming off
+metal contamination - Fabric has some metal contamination
+
+The dataset inlcudes images the original images and images created after rotations. The data for 8 different rotations in - 0, 20, 40, 60, 80, 100, 120, 140 is included.Given an image size, a train and test dataset are available with randomly generated patches. Source images from the train and test are non-overlapping
+
 ## Model Architectures
+We tried to train models with three different architectures. 
 
 * CNN
 * ResNet18
+* ResNet34
+
 
 ## Results
 
