@@ -1,15 +1,14 @@
 # textile-defect-detection
 In the context of textile fabric, rare anomaly can occurs, hence compromizing the quality of the tissus. In order to avoid that in some scenario, it is crucial to detect the defect.
 
-## Overview and Goal
+## Overview and Goal
 
-
-## Model Architectures
+## Model Architectures
 
 * CNN
 * ResNet18
 
-## Results
+## Results
 
 | Models    | Accuracy | Train Loss | Validation Loss | Transformations |
 |-----------|----------|------------|-----------------|-----------------|
@@ -18,7 +17,6 @@ In the context of textile fabric, rare anomaly can occurs, hence compromizing th
 | ResNet101 |          |            |                 |                 |
 
 ## Future Works
-
 
 ### Model Summaries
 
