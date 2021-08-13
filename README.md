@@ -1,5 +1,5 @@
 # textile-defect-detection
-In the context of textile fabric, rare anomaly can occurs, hence compromizing the quality of the tissus. In order to avoid that in some scenario, it is crucial to detect the defect.
+In the context of textile fabric, rare anomaly can occurs, hence compromizing the quality of the tissues. In order to avoid that in some scenario, it is crucial to detect the defect.
 
 ## Overview and Goal
 
@@ -8,12 +8,14 @@ Fabric defect detection is a significant phase of quality control in textile ind
 ## Dataset Desciption 
 
 The dataset is 4 GB and has 48000 distinct records. The size of the images in the dataset is either 32x32 or 64x64. The data includes records that belong 6 different classes of defects - 
-good - If the fabric is good and has no defect
-color - There is a defect in the color of the fabric 
-cut - There is a cut in the fabric
-hole - There is a hole in the fabric
-thread - There is some thread coming off
-metal contamination - Fabric has some metal contamination
+* good - If the fabric is good and has no defect
+* color - There is a defect in the color of the fabric 
+* cut - There is a cut in the fabric
+* hole - There is a hole in the fabric
+* thread - There is some thread coming off
+* metal contamination - Fabric has some metal contamination
+
+![title](fabrics.png)
 
 The dataset inlcudes images the original images and images created after rotations. The data for 8 different rotations in - 0, 20, 40, 60, 80, 100, 120, 140 is included.Given an image size, a train and test dataset are available with randomly generated patches. Source images from the train and test are non-overlapping
 
@@ -24,6 +26,16 @@ We tried to train models with three different architectures.
 * ResNet18
 * ResNet34
 
+![title](resnet18.png)
+
+## Transformations
+
+```
+transforms.Compose([
+transforms.ToTensor(), transforms.Normalize([0.3541], [0.1352]), transforms.RandomErasing(0.3, value=0)
+])
+
+```
 
 ## Results
 
@@ -34,6 +46,10 @@ We tried to train models with three different architectures.
 | ResNet101 |          |            |                 |                 |
 
 ## Future Works
+
+* PREPROCESSING STEPS: Add more preprocessing steps like rotating at angles other than in dataset
+* DIFFERENT MODELS : Try more complex neural network models like VQVAE
+* ADD MORE DATA : Try to get more data to train the models better
 
 ### Model Summaries
 
@@ -121,6 +137,36 @@ Estimated Total Size (MB): 43.86
 ----------------------------------------------------------------
 Total_params 11173318
 Trainable_params 11173318
+```
+
+**CNN**
+```
+----------------------------------------------------------------
+        Layer (type)               Output Shape         Param #
+================================================================
+            Conv2d-1            [1, 32, 30, 30]             320
+       BatchNorm2d-2            [1, 32, 30, 30]              64
+              ReLU-3            [1, 32, 30, 30]               0
+         AvgPool2d-4            [1, 32, 15, 15]               0
+            Conv2d-5            [1, 64, 13, 13]          18,496
+       BatchNorm2d-6            [1, 64, 13, 13]             128
+              ReLU-7            [1, 64, 13, 13]               0
+         AvgPool2d-8              [1, 64, 6, 6]               0
+            Conv2d-9              [1, 32, 6, 6]           2,080
+AdaptiveAvgPool2d-10              [1, 32, 1, 1]               0
+           Linear-11                     [1, 6]             198
+================================================================
+Total params: 21,286
+Trainable params: 21,286
+Non-trainable params: 0
+----------------------------------------------------------------
+Input size (MB): 0.00
+Forward/backward pass size (MB): 0.99
+Params size (MB): 0.08
+Estimated Total Size (MB): 1.07
+----------------------------------------------------------------
+Total_params 21286
+Trainable_params 21286
 ```
 
 Contributors: Emre Okcular, Hashneet Kaur
