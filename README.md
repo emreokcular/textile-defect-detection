@@ -39,11 +39,12 @@ transforms.ToTensor(), transforms.Normalize([0.3541], [0.1352]), transforms.Rand
 
 ## Results
 
-| Models    | Accuracy | Train Loss | Validation Loss | Transformations |
-|-----------|----------|------------|-----------------|-----------------|
-| ResNet18  |          |            |                 |                 |
-| ResNet34  |          |            |                 |                 |
-| ResNet101 |          |            |                 |                 |
+| Models    | Accuracy | Train Loss | Validation Loss |
+|-----------|----------|------------|-----------------|
+| CNN       |    0.82      |   1.303         |    1.333             |
+| ResNet18  |      0.98    |    1.286        |    26.913             |
+| ResNet34  |    0.95      |    1.333        |     21.588            |
+
 
 ## Future Works
 
